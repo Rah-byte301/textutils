@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 export default function Navbar(props) {
-  const [mode, setMode] = useState("dark");
+  const [Mode, setMode] = useState("dark");
+
   return (
-    <nav
-      className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
-    >
+    <nav className={`navbar navbar-expand-lg navbar-dark bg-${Mode}`}>
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           {props.title}
@@ -70,16 +69,42 @@ export default function Navbar(props) {
               <a className="nav-link disabled">Disabled</a>
             </li>
           </ul>
-          <div className="form-check form-switch">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              role="switch"
-              id="flexSwitchCheckDefault"
-              onClick={props.toggle}
-            />
-            <label htmlFor="flexSwitchCheckDefault">toggle</label>
-          </div>
+        </div>
+        <div className="d-flex">
+          <button
+            className="mx-2"
+            onClick={() => {
+              document.body.style.backgroundColor = "blue";
+              setMode("primary");
+            }}
+            style={{ backgroundColor: "blue", height: "30px", width: "30px" }}
+          ></button>
+          <button
+            className="mx-2"
+            onClick={() => {
+              document.body.style.backgroundColor = "red";
+              setMode("danger");
+            }}
+            style={{ backgroundColor: "red", height: "30px", width: "30px" }}
+          ></button>
+          <button
+            className="mx-2"
+            onClick={() => {
+              document.body.style.backgroundColor = "yellow";
+              setMode("warning");
+            }}
+            style={{ backgroundColor: "yellow", height: "30px", width: "30px" }}
+          ></button>
+        </div>
+        <div className="form-check form-switch">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+            onClick={props.toggle}
+          />
+          <label htmlFor="flexSwitchCheckDefault">toggle</label>
         </div>
       </div>
     </nav>
